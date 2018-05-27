@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/styleRegistro.css' %}">
+    <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+    <title> {% block tittle %} Registro {% endblock %}</title>
+</head>
+
+<body>
+    <div class="bloqueIzquierdo">
+        <div class="cajaVacia"></div>
+        <div class="cajaLogo">
+            <div class="logoPro"></div>
+            <div class="titulo">Compilador Web</div>
+        </div>
+        
+            <div class="formulario">
+                <div class="procesoRegistro">Proceso de registro!</div>
+                <input type="text" placeholder="Nombres" required class="campo" id="first_name" name="first_name">
+                <input type="text" placeholder="Apellidos" required class="campo" id="last_name" name="last_name">
+                <input type="email" placeholder="email" required class="campo" id="email" name="email">
+                <input type="text" placeholder="Nombre de usuario" required id="username" class="campo" name="username">
+                <input type="password" placeholder="Contraseña" required id="clave" name="password">
+                <input type="text" placeholder="País" required class="campo" name="pais">
+                <input type="text" placeholder="Ciudad origen" required class="campo" name="ciudad">
+                <input type="text" placeholder="lenguaje de programación" required class="campo" name="lenguaje">
+                <input type="submit" value="Empezar" id="enviar">
+            </div>
+
+        <div class="cajaInicio">
+            <div class="cuenta">
+                <span class="pregunta">¿Ya tienes una cuenta?</span>
+                <a href="{% url 'gmail' %}"><input type="submit" value="Iniciar sesión" id="inic" class="iniciar"></a>
+            </div>
+        </div>
+        <div class="cajaVacia"></div>
+    </div>
+
+    <div class="bloqueDerecho">
+        <div class="capa"></div>
+        <span class="compilador">COMPILADOR</span>
+        <div class="logo"></div>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script>
+
+        function registrar_usuario_ajax() {
+            
+            first_name = $('#first_name').val();
+            last_name = $('#last_name').val();
+            username = $('#username').val();
+            email = $('#email').val();
+            password1 = $('#password1').val();
+            password2 = $('#password2').val();
+            edad = $('#edad').val();
+
+            ciudad = $('#ciudad').val();
+            pais = $('#pais').val();
+            lenguaje = $('#lenguaje').val();
+
+            if(first_name == "" || last_name == "" || username == "" || ){
+
+            }
+
+            $.ajax({
+                url: 'registro',
+                type: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    first_name: first_name,
+                    last_name: last_name,
+                    username: username,
+                    email: email,
+                    password1: password1,
+                    password2: password2,
+
+                    edad: edad,
+                    ciudad: ciudad,
+                    pais: pais,
+                    lenguaje: lenguaje,
+                },
+                success: function (result) {
+                    console.log(result);
+
+                    
+                }, error: function (result) {
+                    console.log(result);
+                }
+            });
+
+
+        }
+    </script>
+</body>
+
+</html>

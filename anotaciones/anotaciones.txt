@@ -1,0 +1,37 @@
+C:\>cd ambientes\entornosvirtuales\Scripts
+C:\ambientes\entornosvirtuales\Scripts>activate
+(entornosvirtuales) C:\>cd ProyectoDjango\CompilerOnline
+
+
+
+Paso #1: Crear proyecto
+(ProjectCompiladores) C:\FrameworkDjango>django-admin startproject refugio
+
+Paso #2: Activate Django
+(ProjectCompiladores) C:\FrameworkDjango\refugio>cd Scripts
+activate
+
+Paso #3: Crear startapp
+(ProjectCompiladores) C:\FrameworkDjango\refugio\apps>django-admin.py startapp adopcion
+
+Paso #4: Ejecutar makemigrations - crea los migrations
+(ProjectCompiladores) C:\FrameworkDjango\refugio>python manage.py makemigrations
+
+Paso #5: Ejecutar migraciones -  crear los models en la base de datos
+Info: https://docs.djangoproject.com/en/2.0/ref/models/fields/
+(ProjectCompiladores) C:\FrameworkDjango\refugio>python manage.py migrate
+
+
+Paso#6 Crear [Super Usuario]
+(entornosvirtuales) C:\ProyectoDjango\CompilerOnline>manage.py createsuperuser
+Username (leave blank to use 'rosalbaguerra'): admin
+Email address: info.interpretedecodigo@gmail.com (clave gmail: //info.poicofu)
+Password: //djjoseph
+Password (again): //djjoseph
+Superuser created successfully. <-- listo, superusuario creado
+
+Paso #7: Correr Servidor
+(ProjectCompiladores) C:\FrameworkDjango\refugio>python manage.py runserver
+
+Paso #8: Shell
+(ProjectCompiladores) C:\FrameworkDjango\refugio>manage.py shell
